@@ -28,7 +28,7 @@ namespace Oxide.Plugins
             // Grab groups to populate data file.
             foreach (var group in permission.GetGroups())
             {
-                if (!data.BlueprintData.ContainsKey(group))
+                if (data != null && !data.BlueprintData.ContainsKey(group))
                 {
                     data.BlueprintData.Add(group, new List<string>());
                 }
@@ -38,6 +38,7 @@ namespace Oxide.Plugins
             // Cache ItemCategories alongside an index for later use.
             foreach (var cat in Enum.GetValues(typeof(ItemCategory)))
             {
+            if(cat != null)
                 Categories.Add(cat.ToString().ToLower(), (ItemCategory)cat);
             }
             //
